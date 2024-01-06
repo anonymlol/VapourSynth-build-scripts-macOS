@@ -10,7 +10,7 @@ libtool     = ('libtool',       '2.4.7',    'https://ftp.wayne.edu/gnu/libtool/l
 pkg_config  = ('pkg-config',    '0.29.2',   'https://pkg-config.freedesktop.org/releases/pkg-config-', '.tar.gz', '', './configure --with-internal-glib', 'make', 'sudo make install')
 cmake       = ('cmake',         '3.27.9',   'https://gitlab.kitware.com/cmake/cmake.git', 'git', '', './configure ', 'make', 'sudo make install')
 ragel       = ('ragel',         '6.10',     'http://www.colm.net/files/ragel/ragel-', '.tar.gz', '', './configure', 'make', 'sudo make install')
-nasm        = ('nasm',          '2.16.01',  'https://github.com/netwide-assembler/nasm', 'git', './autogen.sh', './configure ', 'make', 'sudo make install')
+nasm        = ('nasm',          '2.16.01',  'https://github.com/netwide-assembler/nasm', 'git', './autogen.sh', './configure', 'make', 'sudo make install')
 yasm        = ('yasm',          '1.3.0',    'http://www.tortall.net/projects/yasm/releases/yasm-', '.tar.gz', '', './configure', 'make', 'sudo make install')
 
 # Define working directory
