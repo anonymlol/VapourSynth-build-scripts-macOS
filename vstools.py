@@ -4,14 +4,14 @@
 import os
 import tarfile
 
-autoconf    = ('autoconf',      '2.71',     'https://ftp.gnu.org/gnu/autoconf/autoconf-', '.tar.gz', '', './configure', 'make', 'sudo make install')
-automake    = ('automake',      '1.16.5',   'https://ftp.gnu.org/gnu/automake/automake-', '.tar.gz', '', './configure', 'make', 'sudo make install')
-libtool     = ('libtool',       '2.4.7',    'https://ftp.wayne.edu/gnu/libtool/libtool-', '.tar.gz', '', './configure', 'make', 'sudo make install')
-pkg_config  = ('pkg-config',    '0.29.2',   'https://pkg-config.freedesktop.org/releases/pkg-config-', '.tar.gz', '', './configure --with-internal-glib', 'make', 'sudo make install')
-cmake       = ('cmake',         '3.27.9',   'https://gitlab.kitware.com/cmake/cmake.git', 'git', '', './configure ', 'make', 'sudo make install')
-ragel       = ('ragel',         '6.10',     'http://www.colm.net/files/ragel/ragel-', '.tar.gz', '', './configure', 'make', 'sudo make install')
-nasm        = ('nasm',          '2.16.01',  'https://github.com/netwide-assembler/nasm', 'git', './autogen.sh', './configure', 'make', 'sudo make install')
-yasm        = ('yasm',          '1.3.0',    'http://www.tortall.net/projects/yasm/releases/yasm-', '.tar.gz', '', './configure', 'make', 'sudo make install')
+autoconf    = ('autoconf',      '2.71',         'https://ftp.gnu.org/gnu/autoconf/autoconf-',               '.tar.gz',  '',             './configure',                      'make', 'sudo make install')
+automake    = ('automake',      '1.16.5',       'https://ftp.gnu.org/gnu/automake/automake-',               '.tar.gz',  '',             './configure',                      'make', 'sudo make install')
+libtool     = ('libtool',       '2.4.7',        'https://ftp.wayne.edu/gnu/libtool/libtool-',               '.tar.gz',  '',             './configure',                      'make', 'sudo make install')
+pkg_config  = ('pkg-config',    '0.29.2',       'https://pkg-config.freedesktop.org/releases/pkg-config-',  '.tar.gz',  '',             './configure --with-internal-glib', 'make', 'sudo make install')
+cmake       = ('cmake',         'v3.27.9',      'https://gitlab.kitware.com/cmake/cmake.git',               'git',      '',             './configure',                      'make', 'sudo make install')
+ragel       = ('ragel',         '6.10',         'http://www.colm.net/files/ragel/ragel-',                   '.tar.gz',  '',             './configure',                      'make', 'sudo make install')
+nasm        = ('nasm',          'nasm-2.16.01', 'https://github.com/netwide-assembler/nasm',                'git',      './autogen.sh', './configure',                      'make', 'sudo make install')
+yasm        = ('yasm',          '1.3.0',        'http://www.tortall.net/projects/yasm/releases/yasm-',      '.tar.gz',  '',             './configure',                      'make', 'sudo make install')
 
 # Define working directory
 home = os.path.expanduser('~' + '/')
@@ -48,8 +48,8 @@ def build(app):
     if app[3] == 'git':
         if os.path.exists(app[0]) == False:
             os.system(f'git clone {app[2]}')
-        os.chdir(full_path + '/' + app[0])    
-        os.system(f'git checkout v{app[1]}')
+        os.chdir(full_path + '/' + app[0])
+        os.system(f'git checkout {app[1]}')
         os.chdir(full_path + '/' + app[0])
     else:
         if os.path.exists(f'{app[0]}-{app[1]}{app[3]}') == False:
