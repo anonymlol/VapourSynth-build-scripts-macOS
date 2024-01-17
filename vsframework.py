@@ -81,6 +81,8 @@ def check(app):
         # Make Python Links
         os.system('sudo ln -s /Library/Frameworks/VapourSynth.framework/bin/pip3 /usr/local/bin/vspip')
         os.system('sudo ln -s /Library/Frameworks/VapourSynth.framework/bin/python3 /usr/local/bin/vspython')
+        # Upgrade pip
+        os.system('sudo vspython -m pip install --upgrade pip')
         # Install dependencies
         os.system('sudo vspip install cython numpy setuptools wheel sphinx sphinx-intl sphinx-rtd-theme')
         os.system('sudo ln -s /Library/Frameworks/VapourSynth.framework/bin/cython /usr/local/bin/cython')
@@ -90,7 +92,7 @@ def check(app):
         # Make links
         os.system('sudo ln -s /Library/Frameworks/VapourSynth.framework/lib/libvapoursynth.dylib /usr/local/lib/libvapoursynth.dylib')
         os.system('sudo ln -s /Library/Frameworks/VapourSynth.framework/lib/libvapoursynth-script.dylib /usr/local/lib/libvapoursynth-script.dylib')
-        os.system('sudo ln -s /Library/Frameworks/VapourSynth.framework/lib/libvapoursynth-script.0.dylib /Library/Frameworks/VapourSynth.framework/lib/libvapoursynth-script.0.dylib')
+        os.system('sudo ln -s /Library/Frameworks/VapourSynth.framework/lib/libvapoursynth-script.0.dylib /usr/local/lib/libvapoursynth-script.0.dylib')
         os.system('sudo ln -s /Library/Frameworks/VapourSynth.framework/lib/vapoursynth /usr/local/lib/vapoursynth')
         os.system('sudo ln -s /Library/Frameworks/VapourSynth.framework/lib/pkgconfig/vapoursynth.pc /usr/local/lib/pkgconfig/vapoursynth.pc')
         os.system('sudo ln -s /Library/Frameworks/VapourSynth.framework/lib/pkgconfig/vapoursynth-script.pc /usr/local/lib/pkgconfig/vapoursynth-script.pc')
