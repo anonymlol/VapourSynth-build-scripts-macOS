@@ -4,25 +4,27 @@
 import os
 import tarfile
 
-# Software index. Change version number/tag to get newer versions.
-openssl     = ('openssl',       'openssl-3.2.0',    'git://git.openssl.org/openssl.git',                                'git',      '',             'make', 'sudo make install', './config --prefix=/Library/Frameworks/VapourSynth.framework -no-shared')
-xzutils     = ('xz',            'v5.4.5',           'https://github.com/tukaani-project/xz.git',                        'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --disable-shared')
-zlib        = ('zlib',          'v1.3',             'https://github.com/madler/zlib.git',                               'git',      '',             'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --static')
-python      = ('cpython',       'v3.11.7',          'https://github.com/python/cpython.git',                            'git',      '',             'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework  --enable-shared LDFLAGS="-L/Library/Frameworks/VapourSynth.framework/lib" CPPFLAGS="-I/Library/Frameworks/VapourSynth.framework/include" PKG_CONFIG_PATH=/Library/Frameworks/VapourSynth.framework/lib/pkgconfig')
-libjpg      = ('libjpeg-turbo', '3.0.1',            'https://github.com/libjpeg-turbo/libjpeg-turbo',                   'git',      '',             'make', 'sudo make install', 'cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/Library/Frameworks/VapourSynth.framework/ -DENABLE_STATIC=ON -DENABLE_SHARED=OFF .')
-libpng      = ('libpng',        'v1.6.40',          'https://github.com/glennrp/libpng.git',                            'git',      '',             'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --enable-shared=no')
-libtiff     = ('libtiff',       'v4.6.0',           'https://gitlab.com/libtiff/libtiff',                               'git',      '',             'make', 'sudo make install', 'cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/Library/Frameworks/VapourSynth.framework/ -DBUILD_SHARED_LIBS=OFF -Dzstd=OFF -Dlzma=OFF .')
-imagemagick = ('ImageMagick',   '7.1.1-26',         'https://github.com/ImageMagick/ImageMagick',                       'git',      '',             'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --without-xml --disable-shared --enable-delegate-build CPPFLAGS="-I/Library/Frameworks/VapourSynth.framework/include"')
-freetype    = ('freetype',      '2.13.2',           '-L http://download.savannah.gnu.org/releases/freetype/freetype-',  '.tar.gz',  '',             'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --disable-shared CPPFLAGS="-I/Library/Frameworks/VapourSynth.framework/include"')
-harfbuzz    = ('harfbuzz',      '8.3.0',            'https://github.com/harfbuzz/harfbuzz',                             'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --disable-shared CPPFLAGS="-I/Library/Frameworks/VapourSynth.framework/include"')
-fribidi     = ('fribidi',       'v1.0.13',          'https://github.com/fribidi/fribidi',                               'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --disable-shared CPPFLAGS="-I/Library/Frameworks/VapourSynth.framework/include"')
-libass      = ('libass',        '0.17.1',           'https://github.com/libass/libass',                                 'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --disable-shared CPPFLAGS="-I/Library/Frameworks/VapourSynth.framework/include/freetype2 -I/Library/Frameworks/VapourSynth.framework/include/harfbuzz" PKG_CONFIG_PATH=/Library/Frameworks/VapourSynth.framework/lib/pkgconfig')
-leptonica   = ('leptonica',     '1.84.1',           'https://github.com/danbloomberg/leptonica',                        'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --disable-shared CPPFLAGS="-I/Library/Frameworks/VapourSynth.framework/include" LDFLAGS="-L/Library/Frameworks/VapourSynth.framework/lib"')
-tesseract   = ('tesseract',     '5.3.3',            'https://github.com/tesseract-ocr/tesseract',                       'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework CPPFLAGS="-I/Library/Frameworks/VapourSynth.framework/include/leptonica" PKG_CONFIG_PATH=/Library/Frameworks/VapourSynth.framework/lib/pkgconfig')
-lsmash      = ('l-smash',       'v2.14.5',          'https://github.com/l-smash/l-smash',                               'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --disable-shared')
-ffmpeg      = ('ffmpeg',        'n6.1.1',           'https://github.com/ffmpeg/ffmpeg',                                 'git',      '',             'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --enable-gpl --enable-version3 --enable-shared --disable-static --disable-encoders --disable-programs --disable-filters --disable-doc --disable-avdevice --disable-avfilter --disable-network --disable-postproc')
-zimg        = ('zimg',          'release-3.0.5',    'https://github.com/sekrit-twc/zimg',                               'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework')
-vapoursynth = ('vapoursynth',   'R65',              'https://github.com/vapoursynth/vapoursynth',                       'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework PYTHON=/Library/Frameworks/VapourSynth.framework/bin/python3 PKG_CONFIG_PATH=/Library/Frameworks/VapourSynth.framework/lib/pkgconfig')
+# Framework index. Change version number/tag to get newer versions.
+index = (
+    ('openssl',       'openssl-3.2.0',    'git://git.openssl.org/openssl.git',                                'git',      '',             'make', 'sudo make install', './config --prefix=/Library/Frameworks/VapourSynth.framework -no-shared'),
+    ('xz',            'v5.4.5',           'https://github.com/tukaani-project/xz.git',                        'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --disable-shared'),
+    ('zlib',          'v1.3',             'https://github.com/madler/zlib.git',                               'git',      '',             'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --static'),
+    ('cpython',       'v3.11.7',          'https://github.com/python/cpython.git',                            'git',      '',             'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework  --enable-shared LDFLAGS="-L/Library/Frameworks/VapourSynth.framework/lib" CPPFLAGS="-I/Library/Frameworks/VapourSynth.framework/include" PKG_CONFIG_PATH=/Library/Frameworks/VapourSynth.framework/lib/pkgconfig'),
+    ('libjpeg-turbo', '3.0.1',            'https://github.com/libjpeg-turbo/libjpeg-turbo',                   'git',      '',             'make', 'sudo make install', 'cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/Library/Frameworks/VapourSynth.framework/ -DENABLE_STATIC=ON -DENABLE_SHARED=OFF .'),
+    ('libpng',        'v1.6.40',          'https://github.com/glennrp/libpng.git',                            'git',      '',             'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --enable-shared=no'),
+    ('libtiff',       'v4.6.0',           'https://gitlab.com/libtiff/libtiff',                               'git',      '',             'make', 'sudo make install', 'cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/Library/Frameworks/VapourSynth.framework/ -DBUILD_SHARED_LIBS=OFF -Dzstd=OFF -Dlzma=OFF .'),
+    ('ImageMagick',   '7.1.1-26',         'https://github.com/ImageMagick/ImageMagick',                       'git',      '',             'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --without-xml --disable-shared --enable-delegate-build CPPFLAGS="-I/Library/Frameworks/VapourSynth.framework/include"'),
+    ('freetype',      '2.13.2',           '-L http://download.savannah.gnu.org/releases/freetype/freetype-',  '.tar.gz',  '',             'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --disable-shared CPPFLAGS="-I/Library/Frameworks/VapourSynth.framework/include"'),
+    ('harfbuzz',      '8.3.0',            'https://github.com/harfbuzz/harfbuzz',                             'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --disable-shared CPPFLAGS="-I/Library/Frameworks/VapourSynth.framework/include"'),
+    ('fribidi',       'v1.0.13',          'https://github.com/fribidi/fribidi',                               'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --disable-shared CPPFLAGS="-I/Library/Frameworks/VapourSynth.framework/include"'),
+    ('libass',        '0.17.1',           'https://github.com/libass/libass',                                 'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --disable-shared CPPFLAGS="-I/Library/Frameworks/VapourSynth.framework/include/freetype2 -I/Library/Frameworks/VapourSynth.framework/include/harfbuzz" PKG_CONFIG_PATH=/Library/Frameworks/VapourSynth.framework/lib/pkgconfig'),
+    ('leptonica',     '1.84.1',           'https://github.com/danbloomberg/leptonica',                        'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --disable-shared CPPFLAGS="-I/Library/Frameworks/VapourSynth.framework/include" LDFLAGS="-L/Library/Frameworks/VapourSynth.framework/lib"'),
+    ('tesseract',     '5.3.3',            'https://github.com/tesseract-ocr/tesseract',                       'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework CPPFLAGS="-I/Library/Frameworks/VapourSynth.framework/include/leptonica" PKG_CONFIG_PATH=/Library/Frameworks/VapourSynth.framework/lib/pkgconfig'),
+    ('l-smash',       'v2.14.5',          'https://github.com/l-smash/l-smash',                               'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --disable-shared'),
+    ('ffmpeg',        'n6.1.1',           'https://github.com/ffmpeg/ffmpeg',                                 'git',      '',             'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework --enable-gpl --enable-version3 --enable-shared --disable-static --disable-encoders --disable-programs --disable-filters --disable-doc --disable-avdevice --disable-avfilter --disable-network --disable-postproc'),
+    ('zimg',          'release-3.0.5',    'https://github.com/sekrit-twc/zimg',                               'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework'),
+    ('vapoursynth',   'R65',              'https://github.com/vapoursynth/vapoursynth',                       'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework PYTHON=/Library/Frameworks/VapourSynth.framework/bin/python3 PKG_CONFIG_PATH=/Library/Frameworks/VapourSynth.framework/lib/pkgconfig')
+)
 
 # Define working directory
 home = os.path.expanduser('~' + '/')
@@ -30,34 +32,20 @@ installs = ('.installs')
 full_path = home + installs
 python_fw_ver = '3.11' # used to define path to site-packages
 
-# Everything that will be downloaded, compiled and installed. Comment out the parts you want to skip.
+# Build everything from the index above
 def main():
-    build(openssl)
-    build(xzutils)
-    build(zlib)
-    build(python)
-    build(libjpg)
-    build(libpng)
-    build(libtiff)
-    build(imagemagick)
-    build(freetype)
-    build(harfbuzz)
-    build(fribidi)
-    build(libass)
-    build(leptonica)
-    build(tesseract)
-    build(lsmash)
-    build(ffmpeg)
-    build(zimg)
-    build(vapoursynth)
+    createdir()
+    for i in index:
+        build(i)
 
 # Creating a working directory
-if os.path.exists(full_path) == True:
-    print(f'Directory found: {full_path}')
-else:
-    print(f'Creating directory: {full_path}')
-    os.chdir(home)
-    os.mkdir(installs)
+def createdir():
+    if os.path.exists(full_path):
+        print(f'Directory found: {full_path}')
+    else:
+        print(f'Creating directory: {full_path}')
+        os.chdir(home)
+        os.mkdir(installs)
 
 # Download and extract
 def get(app):
