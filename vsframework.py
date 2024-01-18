@@ -26,7 +26,7 @@ index = (
     ('vapoursynth',   'R65',              'https://github.com/vapoursynth/vapoursynth',                       'git',      './autogen.sh', 'make', 'sudo make install', './configure --prefix=/Library/Frameworks/VapourSynth.framework PYTHON=/Library/Frameworks/VapourSynth.framework/bin/python3 PKG_CONFIG_PATH=/Library/Frameworks/VapourSynth.framework/lib/pkgconfig')
 )
 
-# Define working directory
+# Define build directory
 home = os.path.expanduser('~' + '/')
 installs = ('.installs')
 full_path = home + installs
@@ -38,7 +38,7 @@ def main():
     for i in index:
         build(i)
 
-# Creating a working directory
+# Create build directory
 def createdir():
     if os.path.exists(full_path):
         print(f'Directory found: {full_path}')
